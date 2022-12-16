@@ -2,7 +2,7 @@ require('dotenv').config();
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
-
+const Log = require('./models/logs.js');
 
 // Middleware
 app.set('view engine', 'jsx');
@@ -32,14 +32,17 @@ app.get('/logs/new', (req, res)=>{
 
 // POST //Create
 app.post('/logs', (req, res)=>{
-    console.log(req.body)
-    res.send('received')
+    // console.log(req.body)
+    // res.send('received')
 
 if(req.body.shipIsBroken === 'on'){
     req.body.shipIsBroken = true;
 } else {
     req.body.shipIsBroken = false
 }
+Log.create(req.body, (error, createdLog)=>{
+    res.send(createdLog);
+})
 })
 
 
