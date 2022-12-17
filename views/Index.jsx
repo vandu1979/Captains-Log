@@ -6,11 +6,19 @@ export default class Index extends Component {
     const{ logs } = this.props;
     return (
       <div>
-        <nav>
-                    <a href="/logs/new"> Create a New log</a>
+                <nav>
+                    <a href="/logs/new"> Create a New Log Page </a>
                 </nav>
-                <h1> Logs Index Page</h1>
                 
+                <h1> Logs Index Page</h1>
+                <ul>
+                    <li>navigation</li>
+                    <li>weather</li>
+                    <li>GPS coordinates</li>
+                    <li>Ship sightings</li>
+
+                </ul>
+
       </div>
     )
   }

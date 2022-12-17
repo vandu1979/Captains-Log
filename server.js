@@ -25,6 +25,11 @@ mongoose.connection.once('open', ()=>{
 app.get('/logs', (req, res)=>{
     res.send('Welcome to Captains_logs');
 })
+//INDEX ROUTE
+app.get('/logs', (req, res)=>{
+   res.send('Index') 
+})
+
 // NEW ROUTE
 app.get('/logs/new', (req, res)=>{
     res.render('New');
