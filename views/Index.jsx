@@ -5,9 +5,9 @@ import React, { Component } from 'react'
 const bodyStyling = {
     // display: 'block',
     margin: '0 auto',
-    height: '50%',
+    height: '100%',
     textAlign:'center',
-    backgroundImage: 'url(https://img.freepik.com/premium-vector/yacht-sailboat-sailing-ship-sailing-ship-vector-icon-isolated-blue-background-flat-design-style_8124-97.jpg?w=2000)',
+    backgroundImage: 'url(https://previews.123rf.com/images/imagesbavaria/imagesbavaria1311/imagesbavaria131100269/23796306-summer-background-maritime-the-captain-on-the-sailboat.jpg)',
     marginTop: '10px',
     backgroundPosition: 'center',
   backgroundRepeat: 'no-repeat',
@@ -15,7 +15,7 @@ const bodyStyling = {
 }
 // Basic Styling
 const myStyle = {
-    color: '#ffffff',
+    color: 'red',
     // backgroundcolor: 'orange',
     paddind: '8px',
     fontSize: '20px',
@@ -41,17 +41,17 @@ export default class Index extends Component {
                 <ul>
                     {logs.map((L)=>{
                         return ( 
-                        <li> The <a href= {`/logs/${L.id}`}>{L.title}</a> <br/><br/>
+                        <li>The <a href= {`/logs/${L.id}`}>{L.title}</a> <br/><br/>
                        <form action={`/logs/${L.id}?_method=Delete`} method="POST">
                                         <input type='submit' value='DELETE'/>
                         </form> <br/><br/>
-                    <a href={`/logs/${L.id}/edit`}>Edit This Log</a> <br/><br/>
+                    <a href= {`/logs/${L.id}/edit`}>Edit This Log</a> <br/><br/>
                     </li>
                         )   
                     })}
                     
-                </ul>
-
+                
+                    </ul>
                 </div>
 </body>
 </html>

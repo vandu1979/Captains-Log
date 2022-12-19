@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 
 export default class Show extends Component {
   render() {
+    //on line 6 whatever name object created, use that on line 11-13
     const log  = this.props.log;
     console.log(this.props.log);
     return (
