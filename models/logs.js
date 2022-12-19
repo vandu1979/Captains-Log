@@ -8,7 +8,9 @@ const logSchema = new mongoose.Schema({
         type: String,
         require: true
     },
-    shipIsBroken: Boolean
+    
+    shipIsBroken: Boolean,
+    
 })
 const Log = mongoose.model('Log', logSchema);
 module.exports = Log;

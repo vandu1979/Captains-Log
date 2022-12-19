@@ -3,12 +3,12 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose');
 const Log = require('./models/logs.js');
-
+const methodOverride = require('method-override');
 // Middleware
 app.set('view engine', 'jsx');
 app.engine('jsx',require('express-react-views').createEngine());
 app.use(express.urlencoded({extended:false}));
-
+app.use(methodOverride('_method'));
 
 
 // Connect to Mongodb  / remove deprication
@@ -59,6 +59,19 @@ app.get('/logs/:id', (req, res)=>{
         })
     })
     })
+    //EDIT ROUTE
+ app.get('/logs/:id/edit', (req, res)=>{
+     //find my log by id
+    //render an edit form
+    //pass in the log data / payload
+    Log.findById(req.params.id, (err, foundLog)=>{
+        res.render('Edit', {
+            log:foundLog
+        })
+    })
+ }) 
+ //Put/ UPDATE
+
    
 
 

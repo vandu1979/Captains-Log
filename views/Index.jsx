@@ -14,12 +14,13 @@ export default class Index extends Component {
                 <div>
                 <h1> Logs Index Page</h1>
                 <ul>
-                    {logs.map((log)=>{
+                    {logs.map((L)=>{
                         return ( 
-                        <li> The <a href={`/${log.id}`}>{log.title}</a>
-                        </li>
-                    
-                        )
+                        <li> The <a href={`/logs/${L.id}`}>{L.title}</a>
+                        
+                    <a href={`/logs/${L.id}/edit`}>Edit This Log</a>
+                    </li>
+                        )   
                     })}
                     
                 </ul>
