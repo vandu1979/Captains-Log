@@ -22,12 +22,17 @@ mongoose.connection.once('open', ()=>{
 })
 
 
-app.get('/logs', (req, res)=>{
-    // res.send('Welcome to Captains_logs');
-})
+
+
 //INDEX ROUTE
 app.get('/logs', (req, res)=>{
-   //res.send('Index') 
+//    res.send(logs) 
+Log.find({},(error,allLogs)=>{
+    res.render('Index',{
+        logs:allLogs
+    })
+})
+
 })
 
 // NEW ROUTE
@@ -71,7 +76,27 @@ app.get('/logs/:id', (req, res)=>{
     })
  }) 
  //Put/ UPDATE
-
+app.put('/logs/:id', (req, res)=>{
+    //check if the ship is broken
+    //find log by id and update it
+    //redirect to the log show page
+    if(req.body.shipIsBroken === 'on'){
+        req.body.shipIsBroken = true;
+    } else {
+        req.body.shipIsBroken = false
+    }
+    Log.findByIdAndUpdate(req.params.id, req.body, (err, updatedLog)=>{
+    console.log(updatedLog);
+    res.redirect(`/logs/${req.params.id}`);
+    })
+})
+//Delete Route
+app.delete('/logs/:id', (req, res)=>{
+    Log.findByIdAndRemove(req.params.id,(err, deletedLog)=>{
+        console.log("DELETED", deletedLog)
+     res.redirect('/logs')
+    })
+})
    
 
 
