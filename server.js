@@ -23,11 +23,11 @@ mongoose.connection.once('open', ()=>{
 
 
 app.get('/logs', (req, res)=>{
-    res.send('Welcome to Captains_logs');
+    // res.send('Welcome to Captains_logs');
 })
 //INDEX ROUTE
 app.get('/logs', (req, res)=>{
-   res.send('Index') 
+   //res.send('Index') 
 })
 
 // NEW ROUTE
@@ -46,9 +46,21 @@ if(req.body.shipIsBroken === 'on'){
     req.body.shipIsBroken = false
 }
 Log.create(req.body, (error, createdLog)=>{
-    res.send(createdLog);
+    // res.send(createdLog);
+    res.redirect('/logs');  
 })
 })
+// SHOW ROUTE
+app.get('/logs/:id', (req, res)=>{
+    // res.send(logs[req.params.id]);
+    Log.findById(req.params.id, (err, foundLog)=>{
+    res.render('Show', {
+             log:foundLog
+        })
+    })
+    })
+   
+
 
 
 

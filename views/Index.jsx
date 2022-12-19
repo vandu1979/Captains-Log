@@ -2,24 +2,31 @@ import React, { Component } from 'react'
 
 export default class Index extends Component {
   render() {
-    console.log(this.props.logs);
     const{ logs } = this.props;
+    console.log(this.props.logs);
     return (
-      <div>
+       
+      
+        <body>
                 <nav>
                     <a href="/logs/new"> Create a New Log Page </a>
                 </nav>
-                
+                <div>
                 <h1> Logs Index Page</h1>
                 <ul>
-                    <li>navigation</li>
-                    <li>weather</li>
-                    <li>GPS coordinates</li>
-                    <li>Ship sightings</li>
-
+                    {logs.map((log)=>{
+                        return ( 
+                        <li> The <a href={`/${log.id}`}>{log.title}</a>
+                        </li>
+                    
+                        )
+                    })}
+                    
                 </ul>
 
-      </div>
+                </div>
+        </body>
+      
     )
   }
 }
